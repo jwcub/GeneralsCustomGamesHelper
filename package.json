@@ -1,0 +1,15 @@
+{
+  "name": "generals_custom_games_helper",
+  "scripts": {
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint src/",
+    "build": "rollup -cw"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-plugin-import": "latest",
+    "jquery": "latest",
+    "rollup": "latest",
+    "@rollup/plugin-terser": "latest"
+  },
+  "type": "module"
+}
