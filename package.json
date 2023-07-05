@@ -2,7 +2,8 @@
   "name": "generals_custom_games_helper",
   "scripts": {
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint src/",
-    "build": "rollup -cw"
+    "build": "rollup -c",
+    "watch": "rollup -cw"
   },
   "devDependencies": {
     "eslint": "latest",
