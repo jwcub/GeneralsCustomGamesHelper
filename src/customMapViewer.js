@@ -31,27 +31,40 @@ export default socket => {
 
       clearInterval(it);
 
+      function getClassName(id) {
+        return id.toString(36);
+      }
+
+      function getStyle(id, amount) {
+        return `[class~="${getClassName(id)}"]::before{content:"${amount}"}`;
+      }
+
       function viewElement(id) {
         const land = map[id], element = td[id];
 
         if (element.classList.contains("fog") || element.classList.contains("obstacle")) {
           element.classList.remove("fog", "obstacle");
 
+          const className = getClassName(id);
+          if (!element.classList.contains(className)) {
+            element.classList.add(className);
+          }
+
           if (land === "m") {
             element.classList.add("mountain");
-            return true;
+            return "";
           } else if (land === "s") {
             element.classList.add("swamp");
-            return true;
+            return "";
           } else if (land[0] === "g") {
             element.classList.add("teal", "general");
-            return true;
+            return getStyle(id, land.substring(1));
           } else if (land[0] === "n") {
             element.classList.add("neutral");
-            return true;
+            return getStyle(id, land.substring(1));
           } else if (land !== " ") {
             element.classList.add("city");
-            return true;
+            return getStyle(id, land);
           } else {
             element.classList.add("fog");
           }
@@ -62,12 +75,23 @@ export default socket => {
 
       const config = { attributes: true };
 
+      let styleHtml = "";
+
       for (let i = 0; i < map.length; i++) {
-        if (viewElement(i)) {
+        const res = viewElement(i);
+
+        if (res !== false) {
+          styleHtml += res;
           new MutationObserver(() => setTimeout(viewElement, 100, i))
             .observe(td[i], config);
         }
       }
+
+      const style = document.createElement("style");
+      style.innerHTML = styleHtml;
+      $("#react-container").append(style);
+
+      socket.once("game_over", () => style.remove());
     }, 500);
   });
 }
