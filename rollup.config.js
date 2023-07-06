@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import process from "process";
 
+import { babel } from "@rollup/plugin-babel";
 import terser from "@rollup/plugin-terser";
 
 export default {
@@ -19,5 +20,5 @@ export default {
     format: {
       comments: "all"
     }
-  })]
+  }), babel({ babelHelpers: "bundled" })]
 };

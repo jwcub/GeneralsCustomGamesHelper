@@ -9,4 +9,5 @@ Install `build/bundle.js` to your browser userscript manager (e.g. Tampermonkey)
 - In-game custom map viewer
 - Giving host to spectators
 - Ad block
+- Chat message preservation
 - More features coming soon...

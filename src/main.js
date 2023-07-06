@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 // noinspection JSUnresolvedReference
 
+import chatPreservation from "./chatPreservation.js";
 import customMapViewer from "./customMapViewer.js";
+import removeAd from "./removeAd.js";
 import spectatorsHosting from "./spectatorsHosting.js";
-import { removeAd } from "./utils.js";
 
 const gameUrl = "https://generals.io/games/";
 const detectionInterval = 1000;
@@ -14,8 +15,9 @@ interval = setInterval(() => {
   if (window.location.href.startsWith(gameUrl) && socket) {
     clearInterval(interval);
     console.log("plugin entry");
-    removeAd();
+    removeAd(socket);
     spectatorsHosting(socket);
     customMapViewer(socket);
+    chatPreservation(socket);
   }
 }, detectionInterval);

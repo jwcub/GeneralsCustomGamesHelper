@@ -4,11 +4,11 @@ import { disableMutationObserver, downloadMap } from "./utils.js";
 
 export default socket => {
   socket.on("game_start", async ({ options: { map: mapName } }) => {
+    disableMutationObserver();
+
     if (!mapName) {
       return;
     }
-
-    disableMutationObserver();
 
     let map;
 
@@ -64,9 +64,8 @@ export default socket => {
 
       for (let i = 0; i < map.length; i++) {
         if (viewElement(i)) {
-          const callback = () => setTimeout(() => viewElement(i), 100);
-          const observer = new MutationObserver(callback);
-          observer.observe(td[i], config);
+          new MutationObserver(() => setTimeout(viewElement, 100, i))
+            .observe(td[i], config);
         }
       }
     }, 500);

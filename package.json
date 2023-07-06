@@ -6,11 +6,13 @@
     "watch": "rollup -cw"
   },
   "devDependencies": {
+    "@babel/preset-env": "latest",
     "eslint": "latest",
     "eslint-plugin-import": "latest",
     "jquery": "latest",
     "rollup": "latest",
-    "@rollup/plugin-terser": "latest"
+    "@rollup/plugin-terser": "latest",
+    "@rollup/plugin-babel": "latest"
   },
   "type": "module"
 }
