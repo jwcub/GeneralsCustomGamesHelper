@@ -3,16 +3,27 @@
   "scripts": {
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint src/",
     "build": "rollup -c",
-    "watch": "rollup -cw"
+    "watch": "rollup -cw",
+    "typecheck": "tsc -b"
   },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "latest",
     "@babel/preset-env": "latest",
+    "@rollup/plugin-babel": "latest",
+    "@rollup/plugin-terser": "latest",
+    "@rollup/plugin-typescript": "latest",
+    "@types/jquery": "latest",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
     "eslint": "latest",
     "eslint-plugin-import": "latest",
     "jquery": "latest",
+    "process": "latest",
     "rollup": "latest",
-    "@rollup/plugin-terser": "latest",
-    "@rollup/plugin-babel": "latest"
+    "socket.io-client": "latest",
+    "tslib": "latest",
+    "typescript": "latest"
   },
   "type": "module"
 }

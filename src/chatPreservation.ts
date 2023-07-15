@@ -1,6 +1,8 @@
 import $ from "jquery";
 
-export default socket => {
+import { Client } from "~/types";
+
+export default (socket: Client) => {
   let previousChat = "";
 
   function saveChat() {

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./node_modules/.cache/typescript",
+    "allowJs": true,
+    "target": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

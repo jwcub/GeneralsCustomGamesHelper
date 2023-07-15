@@ -2,7 +2,9 @@ import $ from "jquery";
 
 import { disableMutationObserver, downloadMap } from "./utils.js";
 
-export default socket => {
+import { Client } from "~/types";
+
+export default (socket: Client) => {
   socket.on("game_start", async ({ options: { map: mapName } }) => {
     disableMutationObserver();
 
@@ -10,19 +12,15 @@ export default socket => {
       return;
     }
 
-    let map;
+    let map: string[] = [];
 
     try {
-      map = (await downloadMap(mapName)).map;
+      map = (await downloadMap(mapName)).map.split(",").map((land: string) => land.replace(/^L_/, ""));
     } catch (_) {
       return;
     }
 
-    map = map.split(",").map(land => land.replace(/^L_/, ""));
-
-    let it;
-
-    it = setInterval(() => {
+    const it = setInterval(() => {
       const td = $("#gameMap td");
 
       if (td.length !== map.length) {
@@ -31,16 +29,25 @@ export default socket => {
 
       clearInterval(it);
 
-      function getClassName(id) {
+      function getClassName(id: number) {
         return id.toString(36);
       }
 
-      function getStyle(id, amount) {
+      function getStyle(id: number, amount: string) {
         return `[class~="${getClassName(id)}"]::before{content:"${amount}"}`;
       }
 
-      function viewElement(id) {
-        const land = map[id], element = td[id];
+      function viewElement(id: number) {
+        let land = map[id];
+        const element = td[id];
+
+        if (land[0] === "g") {
+          if (element.classList.contains("obstacle")) {
+            return false;
+          } else if (!element.classList.contains("fog") && !element.classList.contains("general")) {
+            land = map[id] = " ";
+          }
+        }
 
         if (element.classList.contains("fog") || element.classList.contains("obstacle")) {
           element.classList.remove("fog", "obstacle");

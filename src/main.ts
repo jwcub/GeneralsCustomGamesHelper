@@ -1,17 +1,17 @@
-/* eslint-disable no-undef */
-// noinspection JSUnresolvedReference
-
 import chatPreservation from "./chatPreservation.js";
 import customMapViewer from "./customMapViewer.js";
-import removeAd from "./removeAd.js";
-import spectatorsHosting from "./spectatorsHosting.js";
+import removeAd from "./removeAd";
+import spectatorsHosting from "./spectatorsHosting";
+import { Client } from "./types";
 
 const gameUrl = "https://generals.io/games/";
 const detectionInterval = 1000;
 
-let interval;
+declare global {
+  const socket: Client;
+}
 
-interval = setInterval(() => {
+const interval = setInterval(() => {
   if (window.location.href.startsWith(gameUrl) && socket) {
     clearInterval(interval);
     console.log("plugin entry");

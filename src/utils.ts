@@ -1,4 +1,4 @@
-export function downloadMap(mapName) {
+export function downloadMap(mapName: string) {
   return fetch("/api/map?name=" + mapName).then(res => res.json());
 }
 

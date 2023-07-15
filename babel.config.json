@@ -5,7 +5,8 @@
       {
         "useBuiltIns": "entry",
         "corejs": "3.22"
-      }
+      },
+      "@babel/plugin-transform-typescript"
     ]
   ]
 }
