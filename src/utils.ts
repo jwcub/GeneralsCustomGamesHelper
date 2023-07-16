@@ -1,5 +1,7 @@
 import $ from "jquery";
 
+import { Client } from "~/types";
+
 export function downloadMap(mapName: string) {
   return fetch("/api/map?name=" + mapName).then(res => res.json());
 }
@@ -16,6 +18,32 @@ export function disableMutationObserver() {
 
 export function getRid() {
   return window.location.href.match(/games\/([\s\S]*)$/)?.at(1);
+}
+
+export function getUid() {
+  return localStorage.getItem("user_id");
+}
+
+export function getUsername(socket: Client): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const uid = getUid();
+    if (!uid) {
+      reject();
+    } else {
+      socket.emit("get_username", uid, resolve);
+    }
+  });
+}
+
+export function addMessage(message: string) {
+  $(".chat-messages-container")
+    .append(`
+    <p class="chat-message server-chat-message">
+       <span class="announcement-spacer"></span>  
+       ${message}
+    </p>
+  `)
+    .scrollTop(1e8);
 }
 
 export function waitUntilElementExists(selector: string): Promise<JQuery<HTMLElement>> {
@@ -36,4 +64,8 @@ export function waitUntilElementExists(selector: string): Promise<JQuery<HTMLEle
       }
     }, 100);
   });
+}
+
+export function sleep(duration: number) {
+  return new Promise(resolve => setTimeout(resolve, duration));
 }

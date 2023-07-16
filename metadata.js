@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Generals Custom Games Helper
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  Improves your gaming experience
 // @author       jwcub
 // @supportURL   https://github.com/jwcub/GeneralsCustomGamesHelper

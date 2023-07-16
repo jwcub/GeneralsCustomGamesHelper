@@ -11,4 +11,5 @@ Install `build/bundle.js` to your browser userscript manager (e.g. Tampermonkey)
 - Ad block
 - Chat message preservation
 - Auto spec & rejoin
+- Host dump (default on, toggled by pressing `H`)
 - More features coming soon...
