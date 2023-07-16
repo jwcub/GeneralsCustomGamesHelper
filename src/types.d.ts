@@ -11,6 +11,9 @@ interface ListenEvents {
 
 interface EmitEvents {
   set_custom_host: (rid: string, pid: number) => void;
+  leave_game: () => void;
+  join_private: (rid: string, pid: string, nbk: string) => void;
+  get_season: (fn: () => void) => void;
 }
 
 type Client = Socket<ListenEvents, EmitEvents>;
