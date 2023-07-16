@@ -1,8 +1,9 @@
-import chatPreservation from "./chatPreservation.js";
-import customMapViewer from "./customMapViewer.js";
-import removeAd from "./removeAd";
-import spectatorsHosting from "./spectatorsHosting";
-import { Client } from "./types";
+import autoSpecAndRejoin from "~/autoSpecAndRejoin";
+import chatPreservation from "~/chatPreservation";
+import customMapViewer from "~/customMapViewer";
+import removeAd from "~/removeAd";
+import spectatorsHosting from "~/spectatorsHosting";
+import type { Client } from "~/types";
 
 const gameUrl = "https://generals.io/games/";
 const detectionInterval = 1000;
@@ -19,5 +20,6 @@ const interval = setInterval(() => {
     spectatorsHosting(socket);
     customMapViewer(socket);
     chatPreservation(socket);
+    autoSpecAndRejoin(socket);
   }
 }, detectionInterval);

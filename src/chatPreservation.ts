@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-import { Client } from "~/types";
+import type { Client } from "~/types";
 
 export default (socket: Client) => {
   let previousChat = "";

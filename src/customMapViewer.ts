@@ -1,8 +1,7 @@
 import $ from "jquery";
 
-import { disableMutationObserver, downloadMap } from "./utils.js";
-
-import { Client } from "~/types";
+import type { Client } from "~/types";
+import { disableMutationObserver, downloadMap } from "~/utils";
 
 export default (socket: Client) => {
   socket.on("game_start", async ({ options: { map: mapName } }) => {

@@ -1,11 +1,12 @@
 import type { Socket } from "socket.io-client";
 
 interface ListenEvents {
-  queue_update: ({ usernames }: { usernames: string[] }) => void;
-  pre_game_start: () => void;
-  game_start: ({ options: { map } }: { options: { map: string } }) => void;
   chat_message: () => void;
+  game_lost: () => void;
   game_over: () => void;
+  game_start: ({ options: { map } }: { options: { map: string } }) => void;
+  pre_game_start: () => void;
+  queue_update: ({ usernames }: { usernames: string[] }) => void;
 }
 
 interface EmitEvents {
