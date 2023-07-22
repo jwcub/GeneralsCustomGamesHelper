@@ -5,6 +5,7 @@
     "target": "ES2022",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "module": "ES2022",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
@@ -20,6 +21,7 @@
     ]
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "build.ts"
   ]
 }

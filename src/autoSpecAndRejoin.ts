@@ -1,7 +1,7 @@
 import type { Client } from "~/types";
 import { waitUntilElementExists } from "~/utils";
 
-export default (socket: Client) => {
+export default async (socket: Client) => {
   socket.on("game_lost", () => {
     waitUntilElementExists("button:contains('Spectate')")
       .then(e => e.click());

@@ -2,7 +2,7 @@ import $ from "jquery";
 
 import type { Client } from "~/types";
 
-export default (socket: Client) => {
+export default async (socket: Client) => {
   let previousChat = "";
 
   function saveChat() {

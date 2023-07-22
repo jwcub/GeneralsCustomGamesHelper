@@ -3,7 +3,7 @@ import $ from "jquery";
 import type { Client } from "~/types";
 import { disableMutationObserver, downloadMap, waitUntilElementExists } from "~/utils";
 
-export default (socket: Client) => {
+export default async (socket: Client) => {
   socket.on("game_start", async ({ options: { map: mapName } }) => {
     disableMutationObserver();
 

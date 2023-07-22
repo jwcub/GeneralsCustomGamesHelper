@@ -10,8 +10,8 @@ interface ListenEvents {
 }
 
 interface EmitEvents {
-  set_custom_host: (rid: string, pid: number) => void;
   get_username: (uid: string, fn: (username: string) => void) => void;
+  set_custom_host: (rid: string, pid: number) => void;
   set_custom_team: (rid: string, tid: number) => void;
 }
 

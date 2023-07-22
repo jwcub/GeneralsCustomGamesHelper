@@ -1,25 +1,34 @@
+import accurateStars from "~/accurateStars";
 import autoSpecAndRejoin from "~/autoSpecAndRejoin";
 import chatPreservation from "~/chatPreservation";
 import customMapViewer from "~/customMapViewer";
 import removeAd from "~/removeAd";
 import spectatorsHosting from "~/spectatorsHosting";
 import type { Client } from "~/types";
+import { baseUrl, relativeUrl } from "~/utils";
 
-const gameUrl = "https://generals.io/games/";
-const detectionInterval = 1000;
+const detectionInterval = 500;
 
 declare global {
-  const socket: Client;
+  const socket: Client | undefined;
 }
 
-const interval = setInterval(() => {
-  if (window.location.href.startsWith(gameUrl) && socket) {
-    clearInterval(interval);
-    console.log("plugin entry");
-    removeAd(socket);
-    spectatorsHosting(socket);
-    customMapViewer(socket);
-    chatPreservation(socket);
-    autoSpecAndRejoin(socket);
+let status: "base" | "custom" | null = null;
+
+setInterval(async () => {
+  if (window.location.href === baseUrl || window.location.href.startsWith(relativeUrl("profiles"))) {
+    if (status !== "base") {
+      status = "base";
+      await accurateStars();
+    }
+  } else if (window.location.href.startsWith(relativeUrl("games")) && socket) {
+    if (status !== "custom") {
+      status = "custom";
+      await removeAd(socket);
+      await spectatorsHosting(socket);
+      await customMapViewer(socket);
+      await chatPreservation(socket);
+      await autoSpecAndRejoin(socket);
+    }
   }
 }, detectionInterval);

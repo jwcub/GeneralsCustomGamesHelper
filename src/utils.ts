@@ -69,3 +69,17 @@ export function waitUntilElementExists(selector: string): Promise<JQuery<HTMLEle
 export function sleep(duration: number) {
   return new Promise(resolve => setTimeout(resolve, duration));
 }
+
+export const baseUrl = "https://generals.io/";
+
+export function relativeUrl(path: string) {
+  if (path.startsWith("/")) {
+    path = path.replace("/", "");
+  }
+
+  return baseUrl + path;
+}
+
+export function getStarsAndRanks(username: string) {
+  return fetch("/api/starsAndRanks?u=" + username).then(res => res.json());
+}

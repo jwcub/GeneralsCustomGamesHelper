@@ -1,8 +1,15 @@
 # Generals Custom Games Helper
 
-## Usage
+## Installation
 
-Install `build/bundle.js` to your browser userscript manager (e.g. Tampermonkey).
+```shell
+git clone https://github.com/jwcub/GeneralsCustomGamesHelper.git
+cd GeneralsCustomGamesHelper
+npm i
+npm run build
+```
+
+Install the output file `/build/bundle.js` to your browser userscript manager.
 
 ## Features
 
@@ -12,4 +19,5 @@ Install `build/bundle.js` to your browser userscript manager (e.g. Tampermonkey)
 - Chat message preservation
 - Auto spec & rejoin
 - Host dump (default on, toggled by pressing `H`)
+- Accurate stars display
 - More features coming soon...
