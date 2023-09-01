@@ -14,7 +14,8 @@ interface Stars {
 
 export default async () => {
   const username = window.location.href.match(/profiles\/([\s\S]+)$/)?.at(1);
-  const stars = (username ? (await getStarsAndRanks(username)).stars : JSON.parse(localStorage.stars)) as Stars;
+  const stars = (username ? (await getStarsAndRanks(username)).stars :
+    JSON.parse(localStorage.stars ?? "{}")) as Stars;
 
   function displayStar(star: number) {
     return _.round(star, 3).toFixed(3);
