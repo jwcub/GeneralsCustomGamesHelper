@@ -20,5 +20,4 @@ Install the output file `/build/bundle.js` to your browser userscript manager.
 - Auto spec & rejoin
 - Host dump (default on, toggled by pressing `H`)
 - Accurate stars display
-- Enable public room list
 - More features coming soon...

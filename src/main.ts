@@ -3,7 +3,6 @@ import autoSpecAndRejoin from "~/autoSpecAndRejoin";
 import chatPreservation from "~/chatPreservation";
 import customMapViewer from "~/customMapViewer";
 import removeAd from "~/removeAd";
-import roomList from "~/roomList";
 import spectatorsHosting from "~/spectatorsHosting";
 import type { Client } from "~/types";
 import { baseUrl, relativeUrl } from "~/utils";
@@ -25,7 +24,6 @@ setInterval(async () => {
     if (status !== "base") {
       status = "base";
       await accurateStars();
-      await roomList(socket);
     }
   } else if (window.location.href.startsWith(relativeUrl("games"))) {
     if (status !== "custom") {
