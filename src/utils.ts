@@ -84,4 +84,4 @@ export function getStarsAndRanks(username: string) {
   return fetch("/api/starsAndRanks?u=" + username).then(res => res.json());
 }
 
-export const nbk = "sd09fjd203i0ejwi";
+export const nbk = "sd09fjd203i0ejwi_changeme";

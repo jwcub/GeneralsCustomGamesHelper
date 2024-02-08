@@ -1,5 +1,6 @@
 import accurateStars from "~/accurateStars";
 import autoSpecAndRejoin from "~/autoSpecAndRejoin";
+import betterSystemMessages from "~/betterSystemMessages";
 import chatPreservation from "~/chatPreservation";
 import customMapViewer from "~/customMapViewer";
 import removeAd from "~/removeAd";
@@ -33,6 +34,7 @@ setInterval(async () => {
       await customMapViewer(socket);
       await chatPreservation(socket);
       await autoSpecAndRejoin(socket);
+      await betterSystemMessages();
     }
   }
 }, detectionInterval);
